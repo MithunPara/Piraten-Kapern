@@ -1,7 +1,7 @@
 # A1 - Piraten Karpen
 
-  * Author: < You name here >
-  * Email: < Your email here >
+  * Author: < Mithun Paramathasan >
+  * Email: < paramatm@mcmaster.ca >
 
 ## Build and Execution
 
@@ -24,21 +24,21 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
    * Pending (P), Started (S), Blocked (B), Done (D)
  * Definition of Done (DoD):
    * < The feature is tested to ensure that it functions and runs as expected.
-   * There are multiple test runs and all unwanted errors are fixed before the feature
-   * is declared to be finished.>
+   * There are multiple test runs and all unwanted errors are fixed before the feature is declared to be finished.>
 
 ### Backlog 
 
 | MVP? | Id  | Feature  | Status  |  Started  | Delivered |
 | :-:  |:-:  |---       | :-:     | :-:       | :-:       |
-| x   | F01 | Roll a dice |  S | 01/01/23 |  |
-| x   | F02 | Roll eight dices  |  B (F01) |   |
-| x   | F03 | Count number of gold coins and diamonds rolled  |  P  |   |
-| x   | F04 | Compute the score | P | |
+| x   | F01 | Roll a dice | D | 01/23/23 | 01/23/23 |
+| x   | F02 | Roll eight dices  | D | 01/23/23 | 01/23/23 |
+| x   | F03 | Count number of gold coins and diamonds rolled  | D | 01/23/23 | 01/23/23 |
+| x   | F04 | Compute the score for one turn | D | 01/23/23 | 01/23/23 |
 | x   | F05 | Player randomly chooses dice to keep on their turn | B (F02) | | 
 | x   | F06 | Player re-rolls the dice | B (F04) | |
 | x   | F07 | End turn when three skulls are rolled | B (F04) | |
-| x   | F08 | Play 42 games | B (F04) | |
-| x   | F09 | Display percentage of wins for each player | B (F04) | |
+| x   | F08 | Compute final score and display winner of game | B (F04) | |
+| x   | F09 | Play 42 games | B (F04) | |
+| x   | F10 | Display percentage of wins for each player | B (F04) | |
 | ... | ... | ... |
 
