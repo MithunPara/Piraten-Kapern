@@ -23,7 +23,9 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
  * Status: 
    * Pending (P), Started (S), Blocked (B), Done (D)
  * Definition of Done (DoD):
-   * < Your DoD goes here >
+   * < The feature is tested to ensure that it functions and runs as expected.
+   * There are multiple test runs and all unwanted errors are fixed before the feature
+   * is declared to be finished.>
 
 ### Backlog 
 
