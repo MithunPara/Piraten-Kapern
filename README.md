@@ -38,7 +38,7 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 | x   | F06 | End turn when three skulls are rolled | D | 01/23/23 | 01/23/23 |
 | x   | F07 | Randomly choose to re-roll or end turn | D | 01/23/23 | 01/23/23 |
 | x   | F08 | Player randomly chooses dice to keep on their turn | D | 01/23/23 | 01/23/23 |
-| x   | F09 | Compute final score and display winner of game | B (F04) | |
+| x   | F09 | Compute final score and display winner of game | D | 01/23/23 | 01/23/23 |
 | x   | F10 | Play 42 games | B (F04) | |
 | x   | F11 | Display percentage of wins for each player | B (F04) | |
 | ... | ... | ... |
