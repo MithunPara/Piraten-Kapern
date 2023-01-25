@@ -34,11 +34,12 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 | x   | F02 | Roll eight dices  | D | 01/23/23 | 01/23/23 |
 | x   | F03 | Count number of gold coins and diamonds rolled  | D | 01/23/23 | 01/23/23 |
 | x   | F04 | Compute the score for one turn | D | 01/23/23 | 01/23/23 |
-| x   | F05 | Player randomly chooses dice to keep on their turn | B (F02) | | 
-| x   | F06 | Player re-rolls the dice | B (F04) | |
-| x   | F07 | End turn when three skulls are rolled | B (F04) | |
-| x   | F08 | Compute final score and display winner of game | B (F04) | |
-| x   | F09 | Play 42 games | B (F04) | |
-| x   | F10 | Display percentage of wins for each player | B (F04) | |
+| x   | F05 | Player re-rolls the dice | D | 01/23/23 | 01/23/23 |
+| x   | F06 | End turn when three skulls are rolled | D | 01/23/23 | 01/23/23 |
+| x   | F07 | Randomly choose to re-roll or end turn | D | 01/23/23 | 01/23/23 |
+| x   | F08 | Player randomly chooses dice to keep on their turn | B (F02) | |
+| x   | F09 | Compute final score and display winner of game | B (F04) | |
+| x   | F10 | Play 42 games | B (F04) | |
+| x   | F11 | Display percentage of wins for each player | B (F04) | |
 | ... | ... | ... |
 

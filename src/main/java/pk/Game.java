@@ -11,8 +11,8 @@ public class Game {
 
     public void run(){
         player1.turn(numDice);
-        System.out.print("Player 1 scored: " + player1.getScore());
+//        System.out.print("Player 1 scored: " + player1.getScore());
         player2.turn(numDice);
-        System.out.print("Player 2 scored: " + player2.getScore());
+//        System.out.print("Player 2 scored: " + player2.getScore());
     }
 }
