@@ -2,17 +2,15 @@ package pk;
 
 public class Game {
     private Player player1, player2;
-    public int numDice;
     public Game(){
         player1 = new Player();
         player2 = new Player();
-        numDice = 8;
     }
 
     public void run(){
-        player1.turn(numDice);
+        player1.turn();
 //        System.out.print("Player 1 scored: " + player1.getScore());
-        player2.turn(numDice);
+        player2.turn();
 //        System.out.print("Player 2 scored: " + player2.getScore());
     }
 }
