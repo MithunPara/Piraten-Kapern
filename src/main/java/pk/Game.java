@@ -21,11 +21,11 @@ public class Game {
         }
 
         if(player1.score >= 6000){
-            System.out.println("Player 1 won with " + player1.score + "points.");
+        //    System.out.println("Player 1 won with " + player1.score + "points.");
             player1.wins++;
         }
         else {
-            System.out.println("Player 2 won with " + player2.score + "points.");
+        //    System.out.println("Player 2 won with " + player2.score + "points.");
             player2.wins++;
         }
 //        System.out.print("Player 1 scored: " + player1.getScore());
