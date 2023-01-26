@@ -16,3 +16,4 @@ Wednesday, January 25, 2023:
 - Completed step 2 of assignment, can now simulate 42 games
 
 Thursday, January 26, 2023:
+- Started step 3 -- Configured log4j2 in the pom.xml file and created configuration xml to track logging info
