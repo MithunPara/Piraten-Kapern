@@ -8,11 +8,13 @@ public class Player {
     public int score;
     public int numSkulls;
     public int numDice;
+    public float wins;
 
     public Player(){
         this.score = 0;
         this.numSkulls = 0;
         this.numDice = 8;
+        this.wins = 0;
     }
 
     Dice myDice = new Dice();
@@ -41,17 +43,17 @@ public class Player {
                     increaseScore += 100;
                 }
             }
-//*********
-            for(Faces roll: diceKept) {
-                System.out.print(roll + " ");
-            }
-  //          *************
 
             for(Faces roll: diceKept){
                 if(roll == Faces.DIAMOND || roll == Faces.GOLD){
                     increaseScore += 100;
                 }
             }
+
+            if(this.numDice < 6){ // prevents error where multiple skulls are rolled on one turn and a bound error occurs when calculating numDiceReroll
+                break;
+            }
+
             continueTurn = random.nextInt(2);
             numDiceReroll = random.nextInt(2,this.numDice+1); // minimum 2 dice must be re-rolled, keep anywhere from 0 to numDice-2 dice
             numDiceKeep = this.numDice - numDiceReroll;

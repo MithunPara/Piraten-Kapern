@@ -13,3 +13,6 @@ Tuesday, January 24, 2023:
 Wednesday, January 25, 2023:
 - Continued step 2 of assignment, completed couple more features
 - The program can now complete one playthrough of the game and pick a winner
+- Completed step 2 of assignment, can now simulate 42 games
+
+Thursday, January 26, 2023:
