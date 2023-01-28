@@ -130,9 +130,6 @@ public class Player {
             else if(numRolls.getValue() == 8){
                 addScore += 4000;
             }
-            else{
-                continue;
-            }
         }
 
         return addScore;
