@@ -17,3 +17,9 @@ Wednesday, January 25, 2023:
 
 Thursday, January 26, 2023:
 - Started step 3 -- Configured log4j2 in the pom.xml file and created configuration xml to track logging info
+
+Friday, January 27, 2023:
+- Completed step 3 tasks
+
+Saturday, January 28, 2023:
+- Started step 4, implemented point system for dice combinations

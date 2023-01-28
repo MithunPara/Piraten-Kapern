@@ -1,8 +1,5 @@
 package pk;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Player {
     public int score;
@@ -50,6 +47,9 @@ public class Player {
                 }
             }
 
+            int comboScore = checkCombos(diceRolled,diceKept);
+            increaseScore += comboScore;
+
             if(this.numDice < 6){ // prevents error where multiple skulls are rolled on one turn and a bound error occurs when calculating numDiceReroll
                 break;
             }
@@ -87,5 +87,54 @@ public class Player {
         if(this.numSkulls < 3){
             this.score += increaseScore;
         }
+    }
+
+    public int checkCombos(List<Faces> diceRolled, List<Faces> diceKept){
+        int addScore = 0;
+
+        Map<Faces, Integer> numOccurrences = new HashMap<>();
+        for(Faces roll: diceRolled){
+            if(numOccurrences.containsKey(roll)){
+                numOccurrences.put(roll, numOccurrences.get(roll)+1);
+            }
+            else{
+                numOccurrences.put(roll, 1);
+            }
+        }
+
+        for(Faces roll: diceKept){
+            if(numOccurrences.containsKey(roll)){
+                numOccurrences.put(roll, numOccurrences.get(roll)+1);
+            }
+            else{
+                numOccurrences.put(roll, 1);
+            }
+        }
+
+        for(Map.Entry<Faces, Integer> numRolls: numOccurrences.entrySet()){
+            if(numRolls.getValue() == 3){
+                addScore += 100;
+            }
+            else if(numRolls.getValue() == 4){
+                addScore += 200;
+            }
+            else if(numRolls.getValue() == 5){
+                addScore += 500;
+            }
+            else if(numRolls.getValue() == 6){
+                addScore += 1000;
+            }
+            else if(numRolls.getValue() == 7){
+                addScore += 2000;
+            }
+            else if(numRolls.getValue() == 8){
+                addScore += 4000;
+            }
+            else{
+                continue;
+            }
+        }
+
+        return addScore;
     }
 }

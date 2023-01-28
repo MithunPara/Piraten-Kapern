@@ -15,6 +15,9 @@
     * `mvn package`
   * To run the packaged delivery:
     * `java -jar target/piraten-karpen-jar-with-dependencies.jar` 
+  * To activate trace mode in the program when using log4j2, you must configure log4j2 to log trace info
+    * After adding the dependencies, in the log4j2.xml file, you must set the root level to level trace
+    * Then, the log messages from the loggers will be at the trace level or higher
 
 Remark: **We are assuming here you are using a _real_ shell (e.g., anything but PowerShell on Windows)**
 
