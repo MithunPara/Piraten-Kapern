@@ -9,6 +9,7 @@ public class PiratenKarpen {
         Player player1 = new Player();
         Player player2 = new Player();
         Game game = new Game();
+        String strategy1 =
        // game.run(player1, player2);
         for(int i=0; i<42; i++){
             game.run(player1, player2);
@@ -24,9 +25,6 @@ public class PiratenKarpen {
         System.out.println("Player 1's percentage of wins is " + percentWinsP1 + "% and Player 2's percentage of wins is " + percentWinsP2 + "%.");
 
 //        System.out.println("Welcome to Piraten Karpen Simulator!");
-//        System.out.println("I'm rolling a dice");
-//        Dice myDice = new Dice();
-//        System.out.println(myDice.roll());
 //        System.out.println("That's all folks!");
     }
 }
