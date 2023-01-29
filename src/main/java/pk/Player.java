@@ -205,6 +205,11 @@ public class Player {
 
         Map<Faces, Integer> numOccurrences = new HashMap<>();
         for(Faces roll: diceRolled){
+            if(Objects.equals(card, "Monkey Business")){
+                if(roll == Faces.MONKEY || roll == Faces.PARROT){
+                    roll = Faces.MONKEY_PARROT;
+                }
+            }
             if(numOccurrences.containsKey(roll)){
                 numOccurrences.put(roll, numOccurrences.get(roll)+1);
             }
@@ -214,6 +219,11 @@ public class Player {
         }
 
         for(Faces roll: diceKept){
+            if(Objects.equals(card, "Monkey Business")){
+                if(roll == Faces.MONKEY || roll == Faces.PARROT){
+                    roll = Faces.MONKEY_PARROT;
+                }
+            }
             if(numOccurrences.containsKey(roll)){
                 numOccurrences.put(roll, numOccurrences.get(roll)+1);
             }

@@ -28,4 +28,4 @@ Saturday, January 28, 2023:
 
 Sunday, January 29, 2023:
 - Completed step 5, implemented the sea battle fortune card, which rewards points for winning and deducts points when battle is lost
-- 
+- Completed step 6, added the Monkey Business fortune cards where monkeys and parrots count as the same symbol

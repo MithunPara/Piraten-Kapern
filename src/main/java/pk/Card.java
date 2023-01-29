@@ -16,7 +16,10 @@ public class Card {
             deck.add("Sea Battle 2");
             deck.add("Sea Battle 3");
         }
-        for(int i=0; i<29; i++) {
+        for(int i=0; i<4; i++){
+            deck.add("Monkey Business");
+        }
+        for(int i=0; i<25; i++) {
             deck.add("nop");
         }
 

@@ -51,5 +51,7 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 |     | F16 | Add the unique sea battle cards to the deck  | D | 01/29/23 | 01/29/23 |
 |     | F17 | Point deduction if sea battle is lost | D | 01/29/23 | 01/29/23 |
 |     | F18 | Reward points for winning sea battle | D | 01/29/23 | 01/29/23 |
+|     | F19 | Add monkey business cards to the deck | D | 01/29/23 | 01/29/23 |
+|     | F20 | Consider monkeys and parrots the same symbol for combinations | D | 01/29/23 | 01/29/23 |
 | ... | ... | ... |
 
