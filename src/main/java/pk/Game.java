@@ -2,7 +2,9 @@ package pk;
 
 public class Game {
 
-    public void run(Player player1, Player player2){
+    public void run(Player player1, Player player2, String strat1, String strat2){
+        player1.strategy = strat1; player2.strategy = strat2;
+
         while(player1.score < 6000 && player2.score < 6000){
             player1.turn();
            // System.out.print("Player 1 score: " + player1.score);

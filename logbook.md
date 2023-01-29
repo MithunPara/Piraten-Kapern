@@ -23,4 +23,4 @@ Friday, January 27, 2023:
 
 Saturday, January 28, 2023:
 - Started step 4, implemented point system for dice combinations
-- 
+- added combo strategy that will keep combinations of dice and end the turn when 2 skulls are rolled to avoid loss of points
