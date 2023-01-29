@@ -49,5 +49,7 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 |     | F14 | New strategy for player to re-roll or end turn to maximize combos  | D | 01/28/23 | 01/28/23 |
 |     | F15 | Set up card deck and drawing card from deck  | D | 01/28/23 | 01/28/23 |
 |     | F16 | Add the unique sea battle cards to the deck  | D | 01/29/23 | 01/29/23 |
+|     | F17 | Point deduction if sea battle is lost | D | 01/29/23 | 01/29/23 |
+|     | F18 | Reward points for winning sea battle | D | 01/29/23 | 01/29/23 |
 | ... | ... | ... |
 

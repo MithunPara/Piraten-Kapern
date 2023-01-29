@@ -13,6 +13,7 @@ public class Player {
     Faces randomFace;
     List < Faces > diceKept;
     List < Faces > diceRolled;
+    boolean winBattle; // check to see if sea battle has been won, used in checkCombos method
 
     public Player(){
         score = 0;
@@ -25,6 +26,7 @@ public class Player {
         diceKept = new ArrayList<>();
         diceRolled = new ArrayList<>();
         strategy = "";
+        winBattle = false;
     }
 
     Dice myDice = new Dice();
@@ -33,6 +35,8 @@ public class Player {
     public void turn(){
         int continueTurn = 1;
         int increaseScore = 0;
+        this.winBattle = false;
+
         String fortuneCard = card.draw();
 
         if(Objects.equals(this.strategy, "random")){
@@ -103,13 +107,36 @@ public class Player {
         }
         // only increase the score if the player stops re-rolling, if they get 3 skulls, the turn does not contribute to the overall score
         if(this.numSkulls < 3){
-            this.score += increaseScore;
+            if(Objects.equals(card, "Sea Battle 1") && !winBattle){
+                this.score -= 200;
+            }
+            else if(Objects.equals(card, "Sea Battle 2") && !winBattle){
+                this.score -= 500;
+            }
+            else if(Objects.equals(card, "Sea Battle 3") && !winBattle){
+                this.score -= 1000;
+            }
+            else{
+                this.score += increaseScore;
+            }
+        }
+        else{
+            if(Objects.equals(card, "Sea Battle 1") && !winBattle){
+                this.score -= 200;
+            }
+            else if(Objects.equals(card, "Sea Battle 2") && !winBattle){
+                this.score -= 500;
+            }
+            else if(Objects.equals(card, "Sea Battle 3") && !winBattle){
+                this.score -= 1000;
+            }
         }
     }
 
     public void maximizeCombos(int continueTurn, int increaseScore, String card){
         diceKept.clear();
         diceRolled.clear(); // if the previous turn is exited because of having 2 or more skulls, these skulls must be removed
+
         while(this.numSkulls < 3 && continueTurn == 1){
             for(int i=0; i<numDiceReroll; i++){
                 Faces roll = myDice.roll();
@@ -146,8 +173,12 @@ public class Player {
                 break;
             }
 
-            if(this.numSkulls == 2){ // only skip turn if you rolled 2 skulls to avoid losing points
-                break;
+            if(this.numSkulls == 2) { // only skip turn if you rolled 2 skulls to avoid losing points
+                if ((Objects.equals(card, "Sea Battle 1") || Objects.equals(card, "Sea Battle 2") || Objects.equals(card, "Sea Battle 3")) && !winBattle){
+                } // if in a sea battle and you have not won, keep rolling
+                else{
+                    break;
+                }
             }
 
             diceRolled.clear();
@@ -155,6 +186,17 @@ public class Player {
         // only increase the score if the player stops re-rolling, if they get 3 skulls, the turn does not contribute to the overall score
         if(this.numSkulls < 3){
             this.score += increaseScore;
+        }
+        else{
+            if(Objects.equals(card, "Sea Battle 1") && !winBattle){
+                this.score -= 200;
+            }
+            else if(Objects.equals(card, "Sea Battle 2") && !winBattle){
+                this.score -= 500;
+            }
+            else if(Objects.equals(card, "Sea Battle 3") && !winBattle){
+                this.score -= 1000;
+            }
         }
     }
     public int checkCombos(List<Faces> diceRolled, List<Faces> diceKept, String strategy, String card){
@@ -195,19 +237,22 @@ public class Player {
             }
             else if(numRolls.getValue() == 4){
                 addScore += 200;
-                if(numRolls.getKey() == Faces.SABER && Objects.equals(card, "Sea Battle")){
+                if(numRolls.getKey() == Faces.SABER && (Objects.equals(card, "Sea Battle 3") || Objects.equals(card, "Sea Battle 2") || Objects.equals(card, "Sea Battle 1")) && !winBattle){
                     addScore += 1000;
+                    this.winBattle = true;
                 }
             }
             else if(numRolls.getValue() == 3){
                 addScore += 100;
-                if(numRolls.getKey() == Faces.SABER && Objects.equals(card, "Sea Battle")){
+                if(numRolls.getKey() == Faces.SABER && (Objects.equals(card, "Sea Battle 2") || Objects.equals(card, "Sea Battle 1")) && !winBattle){
                     addScore += 500;
+                    this.winBattle = true;
                 }
             }
             else if(numRolls.getValue() == 2){
-                if(numRolls.getKey() == Faces.SABER && Objects.equals(card, "Sea Battle")){
+                if(numRolls.getKey() == Faces.SABER && Objects.equals(card, "Sea Battle 1") && !winBattle){
                     addScore += 300;
+                    this.winBattle = true;
                 }
             }
         }
@@ -223,7 +268,7 @@ public class Player {
             for(Map.Entry<Faces, Integer> rolls: orderedFaces){
                 if(rolls.getValue() > 1){ // only add to the arraylist if the dice occurs more than once
                     for(int i=0; i<rolls.getValue(); i++)
-                        if(rolls.getKey() == Faces.SABER){
+                        if(rolls.getKey() == Faces.SABER && (Objects.equals(card, "Sea Battle 1") || Objects.equals(card, "Sea Battle 2") || Objects.equals(card, "Sea Battle 3")) && !winBattle){
                             newDiceKept.add(0,rolls.getKey());
                         }
                         else{
@@ -234,7 +279,7 @@ public class Player {
                     if(rolls.getKey() == Faces.GOLD || rolls.getKey() == Faces.DIAMOND){
                         newDiceKept.add(rolls.getKey());
                     }
-                    if(rolls.getKey() == Faces.SABER){
+                    if(rolls.getKey() == Faces.SABER && (Objects.equals(card, "Sea Battle 1") || Objects.equals(card, "Sea Battle 2") || Objects.equals(card, "Sea Battle 3")) && !winBattle){
                         newDiceKept.add(0,rolls.getKey());
                     }
                 }
@@ -245,11 +290,17 @@ public class Player {
                     newDiceKept.remove(newDiceKept.size()-1);
                 }
             }
-            else{
+            else if(this.numSkulls == 1){
                 while(newDiceKept.size() > 5){ // when there is 1 skull in the list, make sure player only keeps maximum of 5 dice
                     newDiceKept.remove(newDiceKept.size()-1);
                 }
             }
+            else{
+                while(newDiceKept.size() > 4){
+                    newDiceKept.remove(newDiceKept.size()-1);
+                }
+            }
+
             diceKept.clear();
             diceKept.addAll(newDiceKept); // copy list with combos to the list of dice player is keeping
         }

@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class Card {
 
-    int sabers;
-    int bonusScore;
+//    public int sabers;
+//    public int bonusScore;
     public String draw(){
         Random rand = new Random();
         List<String> deck = new ArrayList<String>();
@@ -21,11 +21,20 @@ public class Card {
         }
 
         int draw = rand.nextInt(35);
-        if(Objects.equals(deck.get(draw), "Sea Battle 1")){
-            this.sabers = 2;
-            this.bonusScore = 300;
-        }
-        else if(Objects.equals(deck.get(draw), "Sea Battle 1")
+
+//        if(Objects.equals(deck.get(draw), "Sea Battle 1")){
+//            this.sabers = 2;
+//            this.bonusScore = 300;
+//        }
+//        else if(Objects.equals(deck.get(draw), "Sea Battle 2")){
+//            this.sabers = 3;
+//            this.bonusScore = 500;
+//        }
+//        else if(Objects.equals(deck.get(draw), "Sea Battle 3")){
+//            this.sabers = 4;
+//            this.bonusScore = 1000;
+//        }
+
         return deck.get(draw);
     }
 }

@@ -27,4 +27,5 @@ Saturday, January 28, 2023:
 - Started step 5, added card deck made of sea battle and nop cards
 
 Sunday, January 29, 2023:
-- Continued step 5
+- Completed step 5, implemented the sea battle fortune card, which rewards points for winning and deducts points when battle is lost
+- 
