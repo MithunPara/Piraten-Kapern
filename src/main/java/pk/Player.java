@@ -28,27 +28,28 @@ public class Player {
     }
 
     Dice myDice = new Dice();
+    Card card = new Card();
 
     public void turn(){
         int continueTurn = 1;
         int increaseScore = 0;
+        String fortuneCard = card.draw();
 
         if(Objects.equals(this.strategy, "random")){
-            randomStrategy(continueTurn, increaseScore);
+            randomStrategy(continueTurn, increaseScore,fortuneCard);
         }
         else{
-            maximizeCombos(continueTurn, increaseScore);
+            maximizeCombos(continueTurn, increaseScore,fortuneCard);
         }
     }
 
-    public void randomStrategy(int continueTurn, int increaseScore){
+    public void randomStrategy(int continueTurn, int increaseScore, String card){
         Random random = new Random();
 
         while(this.numSkulls < 3 && continueTurn == 1){
             for(int i=0; i<numDiceReroll; i++){
                 Faces roll = myDice.roll();
                 diceRolled.add(roll);
-//            System.out.println(roll);
                 if(roll == Faces.SKULL){
                     this.numSkulls++;
                     this.numDice--;
@@ -64,7 +65,7 @@ public class Player {
                 }
             }
 
-            int comboScore = checkCombos(diceRolled,diceKept,strategy);
+            int comboScore = checkCombos(diceRolled,diceKept,strategy,card);
             increaseScore += comboScore;
 
             if(this.numDice < 6){ // prevents error where multiple skulls are rolled on one turn and a bound error occurs when calculating numDiceReroll
@@ -106,7 +107,7 @@ public class Player {
         }
     }
 
-    public void maximizeCombos(int continueTurn, int increaseScore){
+    public void maximizeCombos(int continueTurn, int increaseScore, String card){
         diceKept.clear();
         diceRolled.clear(); // if the previous turn is exited because of having 2 or more skulls, these skulls must be removed
         while(this.numSkulls < 3 && continueTurn == 1){
@@ -137,7 +138,7 @@ public class Player {
                 }
             }
 
-            int comboScore = checkCombos(diceRolled,diceKept,strategy);
+            int comboScore = checkCombos(diceRolled,diceKept,strategy,card);
             increaseScore += comboScore;
             numDiceReroll = this.numDice - diceKept.size();
 
@@ -156,7 +157,7 @@ public class Player {
             this.score += increaseScore;
         }
     }
-    public int checkCombos(List<Faces> diceRolled, List<Faces> diceKept, String strategy){
+    public int checkCombos(List<Faces> diceRolled, List<Faces> diceKept, String strategy, String card){
         int addScore = 0;
         List<Faces> newDiceKept = new ArrayList<>();
 
@@ -194,9 +195,20 @@ public class Player {
             }
             else if(numRolls.getValue() == 4){
                 addScore += 200;
+                if(numRolls.getKey() == Faces.SABER && Objects.equals(card, "Sea Battle")){
+                    addScore += 1000;
+                }
             }
             else if(numRolls.getValue() == 3){
                 addScore += 100;
+                if(numRolls.getKey() == Faces.SABER && Objects.equals(card, "Sea Battle")){
+                    addScore += 500;
+                }
+            }
+            else if(numRolls.getValue() == 2){
+                if(numRolls.getKey() == Faces.SABER && Objects.equals(card, "Sea Battle")){
+                    addScore += 300;
+                }
             }
         }
 
@@ -211,11 +223,19 @@ public class Player {
             for(Map.Entry<Faces, Integer> rolls: orderedFaces){
                 if(rolls.getValue() > 1){ // only add to the arraylist if the dice occurs more than once
                     for(int i=0; i<rolls.getValue(); i++)
-                        newDiceKept.add(rolls.getKey());
+                        if(rolls.getKey() == Faces.SABER){
+                            newDiceKept.add(0,rolls.getKey());
+                        }
+                        else{
+                            newDiceKept.add(rolls.getKey());
+                        }
                 }
                 else{
                     if(rolls.getKey() == Faces.GOLD || rolls.getKey() == Faces.DIAMOND){
                         newDiceKept.add(rolls.getKey());
+                    }
+                    if(rolls.getKey() == Faces.SABER){
+                        newDiceKept.add(0,rolls.getKey());
                     }
                 }
             }

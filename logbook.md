@@ -19,8 +19,12 @@ Thursday, January 26, 2023:
 - Started step 3 -- Configured log4j2 in the pom.xml file and created configuration xml to track logging info
 
 Friday, January 27, 2023:
-- Completed step 3 tasks
+- Completed step 3 tasks 
 
 Saturday, January 28, 2023:
 - Started step 4, implemented point system for dice combinations
 - added combo strategy that will keep combinations of dice and end the turn when 2 skulls are rolled to avoid loss of points
+- Started step 5, added card deck made of sea battle and nop cards
+
+Sunday, January 29, 2023:
+- Continued step 5
